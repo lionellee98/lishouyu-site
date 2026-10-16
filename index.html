@@ -6,6 +6,7 @@
 <title>李寿昱 · 外贸业务员 | 让中国制造直达海外买家</title>
 <meta name="description" content="李寿昱，8 年外贸全流程经验，覆盖建材与机械行业。擅长阿里巴巴国际站、中国制造网平台运营，自主开发客户占比超 50%，客户复购率 70%+。">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/folder.css">
 </head>
 <body>
 
@@ -428,29 +429,32 @@
       <p>从海外客户开发到出口订单交付，熟悉外贸业务主要环节。</p>
     </div>
 
-    <div class="skill-grid">
-      <div class="card skill-block reveal">
-        <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <h3>01 平台与客户开发</h3>
-        <p class="skill-desc">阿里巴巴国际站 · 中国制造网 · 独立站 · Facebook · Instagram · Google Maps · 海关数据</p>
-      </div>
+    <!-- Folder（React Bits 组件原生移植）：点击打开文件夹，文件可拖出/拖回，点击单页放大 -->
+    <div class="folder-row reveal">
+      <div class="folder-host" data-folder='{"label":"01 平台与客户开发","color":"#3d8bff","theme":"light","items":[
+        {"title":"阿里巴巴国际站","description":"产品发布 · 询盘跟进"},
+        {"title":"中国制造网","description":"店铺运营 · 曝光转化"},
+        {"title":"谷歌独立站","description":"建站与内容运营"},
+        {"title":"Facebook · Instagram","description":"社媒主动开发"},
+        {"title":"Google Maps","description":"地图客户开发"},
+        {"title":"海关数据","description":"筛选目标买家"}
+      ]}'></div>
 
-      <div class="card skill-block reveal">
-        <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg></div>
-        <h3>02 业务与出口交付</h3>
-        <p class="skill-desc">询盘跟进 · 报价谈判 · 客户维护 · 订单跟进 · 出口单证 · 报关报检 · 订舱发运 · 售后</p>
-      </div>
+      <div class="folder-host" data-folder='{"label":"02 业务与出口交付","color":"#22b8a6","theme":"light","items":[
+        {"title":"询盘 · 报价谈判"},
+        {"title":"客户维护 · 订单跟进"},
+        {"title":"出口单证"},
+        {"title":"报关资料核对"},
+        {"title":"订舱发运 · 货代对接"},
+        {"title":"售后 · 返单跟进"}
+      ]}'></div>
 
-      <div class="card skill-block skill-block--wide reveal">
-        <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg></div>
-        <h3>03 效率工具与数据处理</h3>
-        <div class="tags">
-          <span class="tag">AI 客户背调</span>
-          <span class="tag">AI 开发信辅助</span>
-          <span class="tag">Excel 数据分析</span>
-          <span class="tag">CRM 客户管理</span>
-        </div>
-      </div>
+      <div class="folder-host" data-folder='{"label":"03 效率工具与数据处理","color":"#8f7bf2","theme":"light","items":[
+        {"title":"AI 客户背调","description":"背景调查 · 资信核实"},
+        {"title":"AI 开发信辅助","description":"多语言开发信撰写"},
+        {"title":"Excel 数据分析","description":"客户与订单数据整理"},
+        {"title":"CRM 客户管理","description":"客户分级 · 跟进记录"}
+      ]}'></div>
     </div>
   </div>
 </section>
@@ -521,6 +525,7 @@
 <script src="assets/js/star-border.js"></script>
 <script src="assets/js/elastic-mesh.js"></script>
 <script src="assets/js/gooey-nav.js"></script>
+<script src="assets/js/folder.js"></script>
 <script src="assets/js/main.js"></script>
 <script type="module" src="assets/js/lanyard.js"></script>
 </body>
