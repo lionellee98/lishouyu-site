@@ -10,6 +10,7 @@
   let star = null;  // StarBorder 实例（同上）
   let mesh = null;  // ElasticMesh 实例（同上）
   let gooey = null; // GooeyNav 实例（同上）
+  let themeToggleEl = null; // 主题开关按钮（DOM 就绪后赋值）
 
   /* ---------- 主题：light / dark / system ---------- */
   const THEME_KEY = 'li-shouyu-theme';
@@ -17,8 +18,10 @@
     const real = mode === 'system' ? (media.matches ? 'dark' : 'light') : mode;
     root.setAttribute('data-theme', real);
     localStorage.setItem(THEME_KEY, mode);
-    $$('.theme-switch button').forEach(b =>
-      b.setAttribute('aria-pressed', String(b.dataset.themeSet === mode)));
+    if (themeToggleEl) {
+      themeToggleEl.dataset.mode = real;
+      themeToggleEl.setAttribute('aria-pressed', String(real === 'dark'));
+    }
     syncSwarm(real);
     syncStar(real);
     syncMesh(real);
@@ -39,8 +42,10 @@
   media.addEventListener('change', () => {
     if ((localStorage.getItem(THEME_KEY) || 'light') === 'system') applyTheme('system');
   });
-  $$('.theme-switch button').forEach(b =>
-    b.addEventListener('click', () => applyTheme(b.dataset.themeSet)));
+  // 主题开关：单按钮 太阳/月亮 切换
+  themeToggleEl = $('#themeToggle');
+  themeToggleEl.addEventListener('click', () =>
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
 
   /* ---------- 导航状态 & 移动端菜单 ---------- */
   const nav = $('#nav');

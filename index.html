@@ -35,11 +35,11 @@
 
     <div class="nav-tools">
       <button class="icon-btn" id="swarmToggle" title="光标光效开关" aria-label="光标光效开关" aria-pressed="true" hidden>✦</button>
-      <div class="theme-switch" role="group" aria-label="主题切换">
-        <button data-theme-set="light" title="浅色">☀</button>
-        <button data-theme-set="dark" title="深色">☾</button>
-        <button data-theme-set="system" title="跟随系统">◐</button>
-      </div>
+      <button class="theme-toggle" id="themeToggle" data-mode="light" aria-pressed="false" aria-label="切换深浅色模式" title="切换深浅色模式">
+        <span class="knob" aria-hidden="true"></span>
+        <span class="sun" aria-hidden="true">☀</span>
+        <span class="moon" aria-hidden="true">☾</span>
+      </button>
       <a class="btn btn-primary" href="resume.pdf" download="李寿昱-简历.pdf" style="padding:9px 18px;font-size:13px">
         简历 PDF <span class="arrow">↓</span>
       </a>
