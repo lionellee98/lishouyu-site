@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>光标光效自检</title>
+<style>
+  body{margin:0;padding:32px;background:#0B1220;color:#EAF0FF;font:14px/1.7 "Microsoft YaHei",system-ui,sans-serif}
+  h1{font-size:20px;margin:0 0 4px}
+  .sub{color:#93A0BD;margin-bottom:24px;font-size:13px}
+  .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px 20px;margin-bottom:14px}
+  .row{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed rgba(255,255,255,.1);padding:7px 0}
+  .row:last-child{border-bottom:0}
+  .k{color:#93A0BD}
+  .v{font-weight:700}
+  .ok{color:#4ADE80}
+  .bad{color:#FF7A7A}
+  .warn{color:#FBBF24}
+  .probe{margin-top:10px;width:100%;height:180px;border-radius:12px;border:1px dashed rgba(255,255,255,.2);display:grid;place-items:center;color:#93A0BD}
+</style>
+</head>
+<body>
+<h1>光标光效自检</h1>
+<div class="sub">把整屏截图发我，我能一眼定位问题</div>
+<div class="card" id="report"></div>
+<div class="card">
+  <div class="row"><span class="k">预览区（把鼠标移进来）</span><span class="k" id="live">移动鼠标试试</span></div>
+  <div class="probe" id="probe">在此区域内移动鼠标</div>
+</div>
+<script>
+const rows = [];
+const add = (k, v, cls) => rows.push({ k, v, cls });
+const yes = b => b ? ['可用', 'ok'] : ['不可用', 'bad'];
+
+// 1 WebGL2
+let gl = null;
+try { const c = document.createElement('canvas'); gl = c.getContext('webgl2'); } catch (e) {}
+const [g] = yes(!!gl);
+add('WebGL2 支持', g + (gl ? ' · ' + gl.getParameter(gl.VERSION) : ''), g === '可用' ? 'ok' : 'bad');
+if (gl) {
+  const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+  const r = dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER);
+  add('显卡渲染器', String(r).slice(0, 46), 'ok');
+}
+// 2 指针能力
+add('hover:hover 支持', window.matchMedia('(hover:hover)').matches ? '是' : '否', window.matchMedia('(hover:hover)').matches ? 'ok' : 'warn');
+add('pointer:fine 支持', window.matchMedia('(pointer:fine)').matches ? '是' : '否（已放宽此限制）', window.matchMedia('(pointer:fine)').matches ? 'ok' : 'warn');
+// 3 减弱动态效果
+const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+add('系统「减弱动态效果」', rm ? '开启（已自动绕开）' : '关闭', rm ? 'warn' : 'ok');
+// 4 本地开关
+const ls = localStorage.getItem('li-shouyu-swarm');
+add('本机开关状态', ls === 'off' ? '已关闭（点导航栏 ✦ 开启）' : '已开启', ls === 'off' ? 'bad' : 'ok');
+
+setTimeout(() => {
+  if (!window.__swarm) {
+    add('SwarmCursor 实例', '未创建（组件未初始化）', 'bad');
+  } else {
+    const d = window.__swarm.debug();
+    add('SwarmCursor 实例', '已创建 · ' + d.count + ' 粒子', 'ok');
+    add('当前是否在跑（raf）', d.raf ? '是' : '否', d.raf ? 'ok' : 'bad');
+    add('是否禁止绘制（reduce）', window.__swarm.reduce ? '是（被系统设置挡住）' : '否', window.__swarm.reduce ? 'bad' : 'ok');
+    add('鼠标是否在页面内', d.pointerInside ? '是' : '否（移动鼠标后再看）', d.pointerInside ? 'ok' : 'warn');
+    add('存在度 presence（0~1）', d.presence.toFixed(3), d.presence > 0.05 ? 'ok' : 'warn');
+  }
+  document.getElementById('report').innerHTML = rows.map(r =>
+    `<div class="row"><span class="k">${r.k}</span><span class="v ${r.cls || ''}">${r.v}</span></div>`
+  ).join('');
+}, 1500);
+
+// 实时探测：本报告页自己画一条粒子，验证这台机器能不能画 WebGL2
+const probe = document.getElementById('probe');
+const live = document.getElementById('live');
+let n = 0;
+probe.addEventListener('pointermove', e => {
+  n++;
+  const r = probe.getBoundingClientRect();
+  const dot = document.createElement('div');
+  dot.style.cssText = `position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:8px;height:8px;border-radius:50%;
+    background:radial-gradient(circle,#fff,#3DC0F5 60%,transparent);pointer-events:none;z-index:99;
+    transition:opacity .6s,transform .6s;transform:translate(-50%,-50%)`;
+  document.body.appendChild(dot);
+  requestAnimationFrame(() => { dot.style.opacity = '0'; dot.style.transform = 'translate(-50%,-50%) scale(2.4)'; });
+  setTimeout(() => dot.remove(), 700);
+  live.textContent = '已捕获 ' + n + ' 次鼠标移动';
+  live.className = 'k ok';
+});
+</script>
+</body>
+</html>

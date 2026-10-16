@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>李寿昱 · 外贸业务员 | 让中国制造直达海外买家</title>
+<meta name="description" content="李寿昱，8 年外贸全流程经验，覆盖建材与机械行业。擅长阿里巴巴国际站、中国制造网平台运营，自主开发客户占比超 50%，客户复购率 70%+。">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="ambient"></div>
+
+<!-- 光标光效层：SwarmCursor 粒子群（WebGL2 实例化绘制），pointer-events:none 不拦截任何点击 -->
+<div class="swarm-cursor" id="swarmLayer" aria-hidden="true">
+  <canvas class="swarm-cursor__canvas" id="swarmCanvas"></canvas>
+</div>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="mark">李</span>
+      <span>李寿昱<small>FOREIGN TRADE · 8 YRS</small></span>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#about">关于我</a>
+      <a href="#capability">核心能力</a>
+      <a href="#path">职业轨迹</a>
+      <a href="#results">业绩亮点</a>
+      <a href="#skills">技能与工具</a>
+      <a href="#contact">联系</a>
+    </div>
+
+    <div class="nav-tools">
+      <button class="icon-btn" id="swarmToggle" title="光标光效开关" aria-label="光标光效开关" aria-pressed="true" hidden>✦</button>
+      <div class="theme-switch" role="group" aria-label="主题切换">
+        <button data-theme-set="light" title="浅色">☀</button>
+        <button data-theme-set="dark" title="深色">☾</button>
+        <button data-theme-set="system" title="跟随系统">◐</button>
+      </div>
+      <a class="btn btn-primary" href="resume.pdf" download="李寿昱-简历.pdf" style="padding:9px 18px;font-size:13px">
+        简历 PDF <span class="arrow">↓</span>
+      </a>
+      <button class="icon-btn burger" id="burger" aria-label="菜单">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-grid">
+    <!-- 首屏左侧：Lanyard 悬挂工牌（three.js 物理模拟，拖动 / 拉伸 / 点击翻面） -->
+    <div class="hero-badge">
+      <div class="lanyard" id="heroLanyard"
+           data-lanyard
+           data-front="assets/img/hero-badge-front.jpg"
+           data-back="assets/img/hero-badge-back.jpg"
+           data-strap="assets/img/hero-badge-strap.jpg"
+           data-card-color="#f4f4f4"
+           data-strap-color="#141519"
+           data-metal="silver"
+           data-finish="glossy"
+           data-size="0.68"
+           data-strap-length="0.66"
+           data-strap-width="0.86"></div>
+      <div class="badge-hint">拖动 · 点击卡面翻面</div>
+    </div>
+
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="pulse"></span>OPEN TO WORK · 临沂</span>
+
+      <h1><span class="mesh-host" id="heroName">李寿昱</span><br><span class="grad">外贸业务员</span></h1>
+
+      <div class="title">熟悉海外客户开发与出口业务跟进 · 8 年外贸业务经验</div>
+
+      <p class="lead">
+        参与阿里巴巴国际站和独立站运营，也负责过海外客户开发、展会接待、订单跟进及出口单证。
+        通过社交媒体、Google Maps 和海关数据开发海外客户。
+      </p>
+
+      <div class="chips">
+        <span class="chip">阿里国际站</span>
+        <span class="chip">中国制造网</span>
+        <span class="chip">社媒自主开发</span>
+        <span class="chip">展会获客</span>
+        <span class="chip">海关数据</span>
+        <span class="chip">AI 辅助开发客户</span>
+        <span class="chip">建材 · 机械</span>
+      </div>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#path">看看我的经历 <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#contact">直接联系我</a>
+        <a class="btn btn-ghost" id="resumeBtn" href="resume.pdf" download="李寿昱-简历.pdf">下载简历 PDF <span class="arrow">↓</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 首屏底部：全球航线带 -->
+  <div class="wrap globe-band">
+    <div class="globe-stage">
+      <canvas id="globe" aria-label="全球航线网络可视化"></canvas>
+      <span class="orbit-label" style="top:6%;left:4%">GLOBAL ROUTES</span>
+      <span class="orbit-label" style="bottom:6%;right:4%">2018 — 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-in reveal">
+      <div class="stat"><div class="num" data-count="8"><em>年</em></div><div class="lbl">外贸全流程经验</div></div>
+      <div class="stat"><div class="num" data-count="11"><em>家</em></div><div class="lbl">2025 年新开发客户</div></div>
+      <div class="stat"><div class="num" data-count="70"><em>%+</em></div><div class="lbl">客户复购率</div></div>
+      <div class="stat"><div class="num" data-count="50"><em>%+</em></div><div class="lbl">自主开发客户占比</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">ABOUT ME / 关于我</span>
+      <h2>8 年外贸经验，熟悉从开发客户到订单交付</h2>
+      <p>建材、机械及化工行业经验，涉及海外客户开发、平台运营、展会接待及出口订单跟进。</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="adv-list">
+          <div class="adv-item">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h4"/></svg></div>
+            <div><h4>01｜外贸订单全流程</h4>
+              <p>熟悉客户开发、报价谈判、订单跟进、出口单证、订舱发运及售后维护等环节。</p></div>
+          </div>
+          <div class="adv-item">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div><h4>02｜B2B 平台运营</h4>
+              <p>有阿里巴巴国际站、中国制造网及品牌独立站的搭建或运营经验，熟悉产品发布和询盘跟进。</p></div>
+          </div>
+          <div class="adv-item">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div><h4>03｜海外客户开发</h4>
+              <p>使用 Facebook、Instagram、Google Maps 及海关数据寻找目标客户，持续开展客户背调与跟进；自主开发客户占比<b>超 50%</b>。</p></div>
+          </div>
+          <div class="adv-item">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
+            <div><h4>04｜客户维护与复购</h4>
+              <p>通过客户分级、定期回访及售后跟进维护客户关系，客户复购率保持在 <b>70% 以上</b>。</p></div>
+          </div>
+          <div class="adv-item">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="M12 16v4"/><path d="M8 22l4-2 4 2"/></svg></div>
+            <div><h4>05｜展会接待与商务洽谈</h4>
+              <p>参与国内外展会筹备、现场接待、客户验厂及展后跟进，推动意向客户转化。</p></div>
+          </div>
+          <div class="adv-item">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></div>
+            <div><h4>06｜AI 工具与业务提效</h4>
+              <p>将 AI 工具用于客户背景调查、开发信撰写及业务资料整理，辅助客户开发和日常跟进。</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo reveal">
+        <img src="assets/img/containers.jpg" alt="港口集装箱堆场" loading="lazy">
+        <div class="cap">FROM INQUIRY TO SHIPMENT · <span>从客户询盘到订单出运</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CAPABILITY ================= -->
+<section id="capability">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">WHAT I BRING / 核心能力</span>
+      <h2>从找客户到出货，我都熟悉</h2>
+      <p>覆盖平台运营、客户开发、展会跟进和出口交付。</p>
+    </div>
+
+    <div class="cap-grid">
+      <div class="card cap reveal">
+        <span class="num">01</span>
+        <h3>平台运营</h3>
+        <p>熟练使用平台和询盘跟进。</p>
+        <ul>
+          <li>阿里巴巴国际站</li>
+          <li>中国制造网</li>
+          <li>谷歌独立站</li>
+          <li>海关数据平台</li>
+        </ul>
+      </div>
+
+      <div class="card cap reveal">
+        <span class="num">02</span>
+        <h3>主动开发客户</h3>
+        <p>主动寻找目标买家，筛选客户并持续跟进。</p>
+        <ul>
+          <li>Facebook / Instagram</li>
+          <li>Google Maps 客户开发</li>
+          <li>海关数据筛选客户</li>
+          <li>AI 工具辅助找客户</li>
+        </ul>
+      </div>
+
+      <div class="card cap reveal">
+        <span class="num">03</span>
+        <h3>展会获客</h3>
+        <p>参与展会筹备、现场接待和展后跟进。</p>
+        <ul>
+          <li>国内外展会筹备</li>
+          <li>现场客户接待与洽谈</li>
+          <li>客户验厂接待</li>
+          <li>展后询盘跟进</li>
+        </ul>
+      </div>
+
+      <div class="card cap reveal">
+        <span class="num">04</span>
+        <h3>订单交付</h3>
+        <p>跟进订单执行、出口单证及出运安排。</p>
+        <ul>
+          <li>出口跟单与单证</li>
+          <li>报关资料核对</li>
+          <li>货代对接与发运</li>
+          <li>售后及返单跟进</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section id="path">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">CAREER PATH / 职业轨迹</span>
+      <h2>从化工到机械，再到建材</h2>
+      <p>三段经历，一条越来越完整的业务闭环。</p>
+    </div>
+
+    <!-- AccordionGallery：外贸全链路实景（React Bits 组件原生移植） -->
+    <div class="accordion-gallery" id="tradeGallery" role="list" aria-label="外贸业务全流程实景"
+         data-default-index="0" data-expand-ratio="0.52" data-height="400"
+         data-tilt="8" data-parallax="0.5" data-stagger="0.06"
+         data-trigger="hover" data-grayscale="true" data-show-labels="true">
+      <div class="ag-panel" role="listitem" tabindex="0" aria-label="国际港口">
+        <span class="ag-panel__frame">
+          <span class="ag-panel__media"><img src="assets/img/port.jpg" alt="国际港口集装箱码头" loading="lazy" draggable="false"></span>
+          <span class="ag-panel__overlay"></span>
+        </span>
+        <span class="ag-panel__label">
+          <span class="ag-panel__bar"></span>
+          <span class="ag-panel__text">国际港口<em>GLOBAL PORT</em></span>
+        </span>
+      </div>
+      <div class="ag-panel" role="listitem" tabindex="0" aria-label="提供方案">
+        <span class="ag-panel__frame">
+          <span class="ag-panel__media"><img src="assets/img/proposal.jpg" alt="为客户定制方案与报价" loading="lazy" draggable="false"></span>
+          <span class="ag-panel__overlay"></span>
+        </span>
+        <span class="ag-panel__label">
+          <span class="ag-panel__bar"></span>
+          <span class="ag-panel__text">提供方案<em>SOLUTION PROPOSAL</em></span>
+        </span>
+      </div>
+      <div class="ag-panel" role="listitem" tabindex="0" aria-label="参加展会">
+        <span class="ag-panel__frame">
+          <span class="ag-panel__media"><img src="assets/img/expo.jpg" alt="参加中国厦门工矿产品展接待客商" loading="lazy" draggable="false" style="object-position:50% 62%"></span>
+          <span class="ag-panel__overlay"></span>
+        </span>
+        <span class="ag-panel__label">
+          <span class="ag-panel__bar"></span>
+          <span class="ag-panel__text">参加展会<em>TRADE FAIR</em></span>
+        </span>
+      </div>
+      <div class="ag-panel" role="listitem" tabindex="0" aria-label="陪同看厂">
+        <span class="ag-panel__frame">
+          <span class="ag-panel__media"><img src="assets/img/factory-tour.jpg" alt="陪同国外客户赴工厂实地看厂" loading="lazy" draggable="false" style="object-position:50% 51%"></span>
+          <span class="ag-panel__overlay"></span>
+        </span>
+        <span class="ag-panel__label">
+          <span class="ag-panel__bar"></span>
+          <span class="ag-panel__text">陪同看厂<em>FACTORY TOUR</em></span>
+        </span>
+      </div>
+      <div class="ag-panel" role="listitem" tabindex="0" aria-label="国外拜访">
+        <span class="ag-panel__frame">
+          <span class="ag-panel__media"><img src="assets/img/overseas.jpg" alt="与国外客户合影，实地拜访维护" loading="lazy" draggable="false"></span>
+          <span class="ag-panel__overlay"></span>
+        </span>
+        <span class="ag-panel__label">
+          <span class="ag-panel__bar"></span>
+          <span class="ag-panel__text">国外拜访<em>OVERSEAS VISIT</em></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <!-- 1 -->
+      <div class="tl-item reveal">
+        <div class="tl-head">
+          <div><h3>山东延德建材有限公司</h3></div>
+          <div><span class="role">外贸业务员</span></div>
+          <div class="time">2024.01 — 至今</div>
+        </div>
+        <div class="tl-body">
+          <div>
+            <ul>
+              <li>通过 Facebook、Instagram 等社媒渠道自主开发客户，推动上新与转化</li>
+              <li>借助 AI 工具与谷歌地图完成客户资信背调，精准定位高潜客户</li>
+              <li>负责客户谈判、订单跟进与售后维护，形成稳定复购</li>
+              <li>操作阿里巴巴国际站与中国制造网平台</li>
+              <li>参加国际展会，现场促成客户成交</li>
+            </ul>
+            <div class="win">
+              <span class="tag">业绩</span>2025 年新开发客户 <b>11 家</b>，位列<b>集团新客户数量第一</b>；自主开发占比超 <b>50%</b>，新客户返单率 <b>70%</b> 以上。
+            </div>
+          </div>
+          <div class="tl-shot"><img src="assets/img/bricks.jpg" alt="石英石台面" loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="tl-item reveal">
+        <div class="tl-head">
+          <div><h3>龙雕智能装备（山东）有限公司</h3></div>
+          <div><span class="role">外贸专员</span></div>
+          <div class="time">2021.04 — 2023.12</div>
+        </div>
+        <div class="tl-body">
+          <div>
+            <ul>
+              <li>高效响应公司分配询盘，推进有效沟通并引导客户下单</li>
+              <li>建立客户分级管理机制，提升跟进效率与转化率</li>
+              <li>负责客户看厂接待与工厂参观讲解</li>
+              <li>协同技术团队完成售后安装指导与视频对接</li>
+              <li>统筹展会参展筹备与现场客户对接</li>
+            </ul>
+          </div>
+          <div class="tl-shot"><img src="assets/img/laser.jpg" alt="激光切割设备" loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="tl-item reveal">
+        <div class="tl-head">
+          <div><h3>山东佐田氏生物科技有限公司</h3></div>
+          <div><span class="role">外贸经理</span></div>
+          <div class="time">2018.07 — 2021.02</div>
+        </div>
+        <div class="tl-body">
+          <div>
+            <ul>
+              <li>负责 5 人外贸团队的日常管理与业绩目标达成</li>
+              <li>从 0 到 1 搭建中国制造网、阿里巴巴国际站及品牌独立站</li>
+              <li>参加国内外化工行业展会，拓展海外渠道</li>
+              <li>主导客户沟通、订单处理与生产进度跟进</li>
+              <li>负责出口跟单、报关报检、货代订舱及发运协调</li>
+            </ul>
+            <div class="win">
+              <span class="tag">业绩</span>入职<b>两个月内</b>完成外贸生涯首单；首年开发出单次采购 <b>20 个集装箱</b>的优质客户，长期稳定返单，该客户贡献公司外贸总业绩的 <b>80%</b>。
+            </div>
+          </div>
+          <div class="tl-shot"><img src="assets/img/plant.jpg" alt="化工生产" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESULTS ================= -->
+<section id="results">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">RESULTS / 业绩亮点</span>
+      <h2>数字比形容词更有说服力</h2>
+    </div>
+
+    <div class="res-grid">
+      <div class="card res reveal">
+        <div class="big" data-count="11"><em>家</em></div>
+        <h4>2025 年新客户 · 集团第一</h4>
+        <p>全年新开发客户 11 家，位列集团新客户数量第一，其中自主开发占比超过 50%。</p>
+      </div>
+      <div class="card res reveal">
+        <div class="big" data-count="20"><em>柜</em></div>
+        <h4>单笔 20 个集装箱</h4>
+        <p>首年即开发单次采购 20 个集装箱的优质客户，长期稳定合作并持续返单。</p>
+      </div>
+      <div class="card res reveal">
+        <div class="big" data-count="80"><em>%</em></div>
+        <h4>单一客户贡献占比</h4>
+        <p>该客户贡献业绩占公司外贸总业绩的 80%，成为业务增长的核心支柱。</p>
+      </div>
+      <div class="card res reveal">
+        <div class="big" data-count="70"><em>%</em></div>
+        <h4>客户返单率</h4>
+        <p>通过分级维护与定期回访，新客户返单率稳定在 70% 以上。</p>
+      </div>
+      <div class="card res reveal">
+        <div class="big" data-count="2"><em>个月</em></div>
+        <h4>入职到首单</h4>
+        <p>外贸生涯首单在入职两个月内完成，快速上手完成市场开拓。</p>
+      </div>
+      <div class="card res reveal">
+        <div class="big" data-count="5"><em>人</em></div>
+        <h4>团队管理</h4>
+        <p>曾负责 5 人外贸团队的日常管理与业绩目标达成，带团队从 0 起步。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">SKILLS & TOOLS / 技能与工具</span>
+      <h2>业务能力与工具应用</h2>
+      <p>从海外客户开发到出口订单交付，熟悉外贸业务主要环节。</p>
+    </div>
+
+    <div class="skill-grid">
+      <div class="card skill-block reveal">
+        <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>01 平台与客户开发</h3>
+        <p class="skill-desc">阿里巴巴国际站 · 中国制造网 · 独立站 · Facebook · Instagram · Google Maps · 海关数据</p>
+      </div>
+
+      <div class="card skill-block reveal">
+        <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg></div>
+        <h3>02 业务与出口交付</h3>
+        <p class="skill-desc">询盘跟进 · 报价谈判 · 客户维护 · 订单跟进 · 出口单证 · 报关报检 · 订舱发运 · 售后</p>
+      </div>
+
+      <div class="card skill-block skill-block--wide reveal">
+        <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg></div>
+        <h3>03 效率工具与数据处理</h3>
+        <div class="tags">
+          <span class="tag">AI 客户背调</span>
+          <span class="tag">AI 开发信辅助</span>
+          <span class="tag">Excel 数据分析</span>
+          <span class="tag">CRM 客户管理</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div class="contact-bg"><img src="assets/img/handshake.jpg" alt="商务合作" loading="lazy"></div>
+      <div class="contact-in">
+        <div class="badge-plate">
+          <img src="assets/img/hero-badge-front.jpg" alt="李寿昱 · 外贸业务员工牌" loading="lazy">
+        </div>
+
+        <div class="contact-copy">
+          <span class="kicker">LET'S TALK / 联系我</span>
+          <h2>如果你的产品要出海，<br>我们聊聊怎么把客户找出来</h2>
+          <p>常驻临沂，可面谈。欢迎建材、机械及制造业外贸岗位机会，也接海外客户开发相关的合作咨询。</p>
+          <div class="hero-cta" style="margin-top:26px">
+            <a class="btn btn-primary" href="tel:17568199821">立即电话联系 <span class="arrow">→</span></a>
+            <a class="btn btn-ghost" href="resume.pdf" download="李寿昱-简历.pdf">下载简历 PDF <span class="arrow">↓</span></a>
+          </div>
+
+          <div class="contact-list">
+            <div class="contact-row" data-copy="17568199821">
+              <div class="ico">📞</div>
+              <div><div class="k">PHONE</div><div class="v">175 6819 9821</div></div>
+              <span class="act">点击复制</span>
+            </div>
+            <div class="contact-row">
+              <div class="ico">📍</div>
+              <div><div class="k">LOCATION</div><div class="v">山东 · 临沂</div></div>
+            </div>
+            <div class="contact-row">
+              <div class="ico">🎯</div>
+              <div><div class="k">TARGET</div><div class="v">外贸业务员 · 8-10K</div></div>
+            </div>
+            <div class="contact-row" data-copy="15650019967">
+              <div class="ico">💬</div>
+              <div><div class="k">WECHAT / 微信</div><div class="v">156 5001 9967</div></div>
+              <span class="act">点击复制</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div>© 2026 李寿昱 · 外贸业务员　|　建材 · 机械 · 8 年全流程经验</div>
+    <div>
+      <a href="resume.pdf" download="李寿昱-简历.pdf">简历 PDF</a> ·
+      <a href="#top">回到顶部</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/js/swarm-cursor.js"></script>
+<script src="assets/js/globe.js"></script>
+<script src="assets/js/crystalized-globe.js"></script>
+<script src="assets/js/accordion-gallery.js"></script>
+<script src="assets/js/star-border.js"></script>
+<script src="assets/js/elastic-mesh.js"></script>
+<script src="assets/js/gooey-nav.js"></script>
+<script src="assets/js/main.js"></script>
+<script type="module" src="assets/js/lanyard.js"></script>
+</body>
+</html>
