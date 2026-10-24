@@ -85,20 +85,11 @@ section{position:relative;padding:96px 0}
 main,.nav,.footer{position:relative;z-index:1}
 
 /* ---------- nav ---------- */
-/* 背景与磨砂放在 ::before 上并做底部渐隐，消除背景带底边的“分界线”；导航内容不受遮罩影响 */
+/* 透明顶栏：无背景、无分割线，文字直接落在页面背景上 */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:50;
-  transition:background .3s var(--ease);
+  background:transparent;
 }
-.nav::before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:color-mix(in srgb, var(--bg) 72%, transparent);
-  backdrop-filter:blur(18px) saturate(160%);
-  -webkit-backdrop-filter:blur(18px) saturate(160%);
-  -webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 26px),transparent);
-  mask-image:linear-gradient(to bottom,#000 calc(100% - 26px),transparent);
-}
-.nav.scrolled::before{box-shadow:0 10px 30px rgba(0,0,0,.12)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.04em;white-space:nowrap}
 .brand>span:last-child{white-space:nowrap}
