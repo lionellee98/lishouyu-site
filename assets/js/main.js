@@ -85,11 +85,15 @@
       node = document.createTextNode('0');
       el.insertBefore(node, el.firstChild);
     }
-    const dur = 1200, start = performance.now();
-    const ease = t => 1 - Math.pow(1 - t, 3);
+    // 小数值滚动过程保留一位小数，让 8 / 11 这类数字也能平滑「数」上去
+    const small = target < 20;
+    const dur = 1800, start = performance.now();
+    // 四阶缓出：前段增速快、后段缓慢滑落，最后自然停在目标值
+    const ease = t => 1 - Math.pow(1 - t, 4);
     (function step(now) {
       const p = Math.max(0, Math.min(1, (now - start) / dur));
-      node.nodeValue = Math.round(target * ease(p)).toString();
+      const v = target * ease(p);
+      node.nodeValue = p < 1 ? (small ? v.toFixed(1) : Math.round(v).toString()) : Math.round(target).toString();
       if (p < 1) requestAnimationFrame(step);
     })(start);
   }
