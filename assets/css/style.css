@@ -187,21 +187,6 @@ main,.nav,.footer{position:relative;z-index:1}
 }
 .hero-badge .lanyard{position:relative;z-index:1}
 .hero-badge .badge-hint{bottom:6px}
-/* 卡片背后：灰色文字衬托层（名字大字水印 + 两列说明，从卡片两侧露出） */
-.badge-back{
-  position:absolute;inset:0;z-index:0;pointer-events:none;
-  display:grid;place-content:center;gap:28px;justify-items:center;
-}
-.badge-back .bn{
-  font-size:clamp(72px,11vw,104px);font-weight:800;letter-spacing:.12em;line-height:1;
-  white-space:nowrap;
-  color:color-mix(in srgb,var(--text) 15%,transparent);
-}
-.badge-back .bl{
-  display:grid;grid-template-columns:auto auto;gap:16px 96px;
-  font-size:14px;font-weight:600;letter-spacing:.32em;white-space:nowrap;
-  color:var(--faint);
-}
 
 /* 首屏底部：全球航线带 */
 .globe-band{position:relative;margin-top:clamp(20px,3.4vh,52px);display:flex;justify-content:center}
